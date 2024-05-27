@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!--<ion-back-button></ion-back-button>-->
+      <ion-button size="small" shape="round" (click)="closeModal()" color="tertiary">
+        <ion-icon slot="start" name="arrow-round-back" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <!--{{stRTicket}}-->
+      Llegada del Proveedor
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <form [formGroup]="onLlegadaProveedorForm">
+    <ion-card>
+      <ion-card-content>
+
+        <ion-item>
+          <ion-label>Llegó Proveedor</ion-label>
+          <ion-checkbox formControlName="datLlegadaChecked" [(ngModel)]="datLlegadaChecked" ></ion-checkbox>
+        </ion-item>
+
+        <ion-item-divider color="dark">
+            Contacto
+        </ion-item-divider>
+        <ion-item>
+          <ion-label position="floating"></ion-label>
+          <ion-textarea rows="2" cols="12" formControlName="datContacto" [(ngModel)]="datContacto"></ion-textarea>
+        </ion-item>
+
+        <ion-item-divider color="dark">
+            Comentario
+        </ion-item-divider>
+        <ion-item>
+          <ion-label position="floating"></ion-label>
+          <ion-textarea rows="5" cols="12" formControlName="datComentario" [(ngModel)]="datComentario"></ion-textarea>
+        </ion-item>
+
+        <ion-button icon-center size="small"  expand="full" color="secondary" ion-button block (click)="SrStartListening()" tappable>
+          <ion-icon class="imgcolor" name="mic"  ></ion-icon>{{ 'app.pages.General.ActrMic' | translate }}
+        </ion-button>
+
+      </ion-card-content>
+  </ion-card>
+  <ion-button icon-left expand="full" shape="round" color="secondary" class="ion-margin-top" (click)="SrIngresarLlegadaProveedor()" [disabled]="!onLlegadaProveedorForm.valid" tappable>
+    Reportar
+    <ion-icon name="arrow-round-forward"></ion-icon>
+  </ion-button>
+  </form>
+
+</ion-content>

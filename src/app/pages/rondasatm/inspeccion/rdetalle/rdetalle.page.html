@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!--<ion-back-button></ion-back-button>-->
+      <ion-button size="small" shape="round" (click)="closeModal()" color="tertiary">
+        <ion-icon slot="start" name="arrow-round-back" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{stRATM}} - {{ stRNomPunto}}
+    </ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="onDetalleForm">
+    <div>
+      <ion-card>
+        <ion-card-content>
+          <ion-item-divider color="dark">
+            Evidencia
+          </ion-item-divider>
+          <ion-item-divider >
+            <img  [src]="stbase64ImageAux"  />
+          </ion-item-divider>
+          <ion-button icon-center size="small"  expand="full" color="secondary" ion-button block (click)="SrCapturarFoto()"  tappable >
+            <ion-icon class="imgcolor" name="ios-reverse-camera"></ion-icon>{{ 'app.pages.General.TomarFoto' | translate }}
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div>
+      <ion-card>
+        <ion-card-content>
+          <ion-item-divider color="dark">
+            Detalle de la Novedad
+          </ion-item-divider>
+           <ion-item>
+             <ion-label position="floating"></ion-label>
+              <ion-textarea rows="12" cols="20" formControlName="datText" [(ngModel)]="datText"></ion-textarea>
+            </ion-item>
+            <ion-button icon-center size="small"  expand="full" color="secondary" ion-button block (click)="SrStartListening()" tappable>
+              <ion-icon class="imgcolor" name="mic"  ></ion-icon>{{ 'app.pages.General.ActrMic' | translate }}
+            </ion-button>
+        </ion-card-content>
+      </ion-card>
+     </div>
+      <ion-button icon-left expand="full" shape="round" color="secondary" class="ion-margin-top" (click)="SrIngresarRegistro(datpre.PRORON_IDREG, datpre.PUNPRE_OBLIGA_IMAGEN)" [disabled]="!onDetalleForm.valid" tappable>
+        Guardar
+        <ion-icon name="arrow-round-forward"></ion-icon>
+      </ion-button>
+  </form>
+</ion-content>

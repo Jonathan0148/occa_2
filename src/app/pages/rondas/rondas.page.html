@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        {{ 'app.pages.RutaProg.title.header' | translate }}
+    </ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="ion-no-margin" >
+    <ion-item-divider color="dark">
+      Tickets Abiertos
+    </ion-item-divider>
+    <div class="ion-no-margin" >
+      <ion-item  *ngFor="let dat of dataAux"  [color]="dat.ACCESO=='1' ? 'warning' : dat.ACCESO=='2' ? 'dark': 'light'" (click)="SrGetAccionesMinutas(dat.MINUTA_ID, dat.PUNTO_ID, dat.PUNTO_ATM, dat.PUNTO_NOMBRE, dat.ACCESO, dat.ACCESOID)"   >
+              <!--
+              <ion-thumbnail slot="start">
+                <img [src]="stLRutaImg + dat.IMAGEN" [color]="dat.ACCESO=='0' ? 'dark' : dat.ACCESO=='1' ? 'dark' : dat.ACCESO=='2' ? 'light': 'light'"  slot="start" (click)="PresentWaze(dat.PUNTO_LAT, dat.PUNTO_LON, dat.PUNTO_NOMBRE, dat.ACCESO, dat.PUNTO_ID )" >
+
+              </ion-thumbnail>
+              -->
+          <ion-icon name="md-pin" style="zoom:1.5;"   [color]="dat.ACCESO=='0' ? 'danger' : dat.ACCESO=='1' ? 'dark' : dat.ACCESO=='2' ? 'light': 'light'"  slot="start" (click)="PresentWaze(dat.PUNTO_LAT, dat.PUNTO_LON, dat.PUNTO_NOMBRE, dat.ACCESO, dat.PUNTO_ID )"></ion-icon>
+
+          <ion-label class="ion-text-wrap">
+            <h2 no-margin class="fw500 no-margin" >
+              <div text-wrap>
+                <ion-text class="fw500 no-margin">Ticket: {{dat.MINUTA_CODIGO}}</ion-text>
+              </div>
+            </h2>
+            <p class="lpuesto" >
+              <ion-text color="dark" slot="end">ATM: {{dat.PUNTO_ATM}} - {{dat.PUNTO_NOMBRE}}</ion-text>
+            </p>
+            <p class="lpuesto" >
+              <ion-text color="dark" slot="end">Fecha: {{dat.FECHA}} - {{dat.HORA_PROG}}</ion-text>
+            </p>
+            <p class="lpuesto" >
+              <ion-text color="dark" slot="end">Tipo: {{dat.MIN_CAT_ID}}</ion-text>
+            </p>
+            <!--
+           <p class="lpuesto">
+             <ion-text *ngIf="dat.ACCESO=='0'" (click)="presentAccesos(dat.PUNTO_ID, dat.PUNTO_ATM, dat.PUNTO_NOMBRE, dat.ACCESO)" color="danger">Acceso al ATM</ion-text>
+             <ion-text *ngIf="dat.ACCESO=='1'" (click)="presentAccesos(dat.PUNTO_ID, dat.PUNTO_ATM, dat.PUNTO_NOMBRE, dat.ACCESO)" color="danger">En Operación</ion-text>
+             <ion-text  *ngIf="dat.ACCESO=='2'" (click)="presentAccesos(dat.PUNTO_ID, dat.PUNTO_ATM, dat.PUNTO_NOMBRE, dat.ACCESO)" color="dark">Visitado</ion-text>
+          </p>
+          -->
+        </ion-label>
+
+      </ion-item>
+
+    </div>
+
+  </div>
+</ion-content>

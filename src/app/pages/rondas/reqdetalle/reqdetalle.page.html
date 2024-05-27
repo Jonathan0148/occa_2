@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!--<ion-back-button></ion-back-button>-->
+      <ion-button size="small" shape="round" (click)="closeModal()" color="tertiary">
+        <ion-icon slot="start" name="arrow-round-back" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+        Detalle del Ticket
+    </ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+<ion-content padding class="buttons-components-page">
+  <div class="ion-no-margin" >
+
+      <ion-item-divider color="primary">ATM: {{stLATM}} - {{stLNombreATM}}</ion-item-divider>
+        <div class="ion-no-margin" >
+          <ion-item>
+              <ion-label>
+                <h2 no-margin class="fw500 no-margin">
+                  <ion-text color="dark">Ticket No</ion-text>
+                </h2>
+
+                <p class="lpuesto">
+                  <ion-text >{{stLMinutaCod}}</ion-text>
+                </p>
+              </ion-label>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>
+                  <h2 no-margin class="fw500 no-margin">
+                    <ion-text color="dark">Fecha de Programación:</ion-text>
+                  </h2>
+
+                  <p class="lpuesto">
+                    <ion-text >{{stLFecha}}</ion-text>
+                  </p>
+                </ion-label>
+              </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <h2 no-margin class="fw500 no-margin">
+                  <ion-text color="dark">Tipo</ion-text>
+                </h2>
+
+                <p class="lpuesto">
+                  <ion-text >{{stLTipo}}</ion-text>
+                </p>
+              </ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <h2 no-margin class="fw500 no-margin">
+                  <ion-text color="dark">Categoría</ion-text>
+                </h2>
+
+                <p class="lpuesto">
+                  <ion-text >{{stLCategoria}}</ion-text>
+                </p>
+              </ion-label>
+            </ion-item>
+
+
+
+            <ion-item>
+              <ion-label>
+                <h2 no-margin class="fw500 no-margin">
+                  <ion-text color="dark">SubCategoría</ion-text>
+                </h2>
+
+                <p class="lpuesto">
+                  <ion-text >{{stLSubCategoria}}</ion-text>
+                </p>
+              </ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <h2 no-margin class="fw500 no-margin">
+                  <ion-text color="dark">Novedad</ion-text>
+                </h2>
+
+                <p class="lpuesto">
+                  <ion-text >{{stLNovedad}}</ion-text>
+                </p>
+              </ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <h2 no-margin class="fw500 no-margin">
+                  <ion-text color="dark">Proveedor</ion-text>
+                </h2>
+
+                <p class="lpuesto">
+                  <ion-text >{{stLProveedor}}</ion-text>
+                </p>
+              </ion-label>
+            </ion-item>
+
+        <!--
+        <ion-card>
+
+            <ion-card-content>
+              <ion-label position="floating" color="dark">Foto</ion-label>
+              <img  [src]="stLFoto" *ngIf="stLFoto" />
+
+            </ion-card-content>
+
+            <ion-item color="dark">
+
+
+            </ion-item>
+          </ion-card>
+          -->
+        <ion-item-divider color="primary">Descripción</ion-item-divider>
+        <ion-textarea rows="7" cols="20" >{{stLDescripcion}}</ion-textarea>
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+</ion-content>

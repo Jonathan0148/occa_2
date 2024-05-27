@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        {{ 'app.pages.RondasATM.title.header' | translate }}
+    </ion-title>
+
+  </ion-toolbar>
+
+  <ion-toolbar color="dark" class="ion-text-center">
+
+      <ion-searchbar placeholder="Buscar ATM" [(ngModel)]="searchKey" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)"></ion-searchbar>
+      <ion-buttons slot="end">
+      <!--<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">-->
+        <ion-button (click)="GetATMBusqueda()" size="small" shape="round" color="medium" >
+          <ion-icon ios="ios-search" md="md-search"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
+
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="ion-no-padding" fixed>
+     <ion-row class="ion-no-padding">
+       <ion-col class="ion-no-padding">
+         <ion-button class="ion-no-margin" expand="full" size="medium" [color]="stLColorTab1"  (click)="SrOpenTab('0')">
+           Pendientes
+         </ion-button>
+       </ion-col>
+       <ion-col class="ion-no-padding">
+         <ion-button class="ion-no-margin" expand="full" size="medium" [color]="stLColorTab2" (click)="SrOpenTab('1')">
+           Realizadas
+         </ion-button>
+       </ion-col>
+
+     </ion-row>
+     <div *ngIf="TabPosition === '0'">
+       <div class="ion-no-margin" >
+         <!-- # -->
+         <ion-item  class="bg-white" *ngFor="let dat of dataAux"  (click)="PresentInspeccion(dat.FECHA_ID_BASE,dat.RON_ID, dat.ROD_ID_PUNTO, dat.PUNTO_ATM,  dat.PUNTO_NOMBRE)">
+           <!--
+           <ion-thumbnail slot="start">
+             <img [src]="stLRutaImgSA">
+
+           </ion-thumbnail>
+           -->
+           <ion-label>
+             <h2>
+                 <ion-text color="dark"><strong>ATM - {{dat.PUNTO_ATM}}</strong></ion-text>
+             </h2>
+
+             <p class="text-12x">
+               <ion-text color="primary">{{dat.PUNTO_NOMBRE}}</ion-text>
+             </p>
+
+
+             <ion-badge slot="end" color="warning">
+               <ion-text color="dark">{{dat.Tipo}}</ion-text>
+             </ion-badge>
+
+
+
+           </ion-label>
+         </ion-item>
+         <!-- # -->
+       </div>
+     </div>
+     <div *ngIf="TabPosition === '1'">
+       <div class="ion-no-margin" >
+         <!-- # -->
+         <ion-item  class="bg-white" *ngFor="let dat of dataAux" >
+           <!--
+           <ion-thumbnail slot="start">
+             <img [src]="stLRutaImgASI">
+
+           </ion-thumbnail>
+           -->
+           <ion-label>
+             <h2>
+                 <ion-text color="dark"><strong>ATM - {{dat.PUNTO_ATM}}</strong></ion-text>
+             </h2>
+
+             <p class="text-12x">
+               <ion-text color="primary">{{dat.PUNTO_NOMBRE}}</ion-text>
+             </p>
+            <!--
+
+             <ion-badge slot="end" color="warning">
+               <ion-text color="dark">Instalar TAG</ion-text>
+             </ion-badge>
+             -->
+
+
+           </ion-label>
+         </ion-item>
+         <!-- # -->
+       </div>
+     </div>
+
+  </ion-grid>
+</ion-content>

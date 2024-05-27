@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        Recibir Precintos
+    </ion-title>
+
+  </ion-toolbar>
+  <ion-toolbar color="dark">
+    <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
+    <ion-buttons slot="end">
+      <!--<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">-->
+      <ion-button (click)="getATMBusqueda()" size="small" shape="round" color="medium" >
+        <ion-icon ios="ios-search" md="md-search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding class="buttons-components-page">
+  <div class="ion-no-margin" >
+    <ion-item-divider color="primary">Precintos Disponibles</ion-item-divider>
+      <div *ngIf="stLEstado === '0'" class="center">
+          <ion-label>
+            <h2>
+              <ion-text color="dark"><strong>{{stLInfo}}</strong></ion-text>
+            </h2>
+          </ion-label>
+
+        <!-- # -->
+        </div>
+        <div *ngIf="stLEstado === '1'">
+          <div *ngIf="stLNFC === 'NFC'">
+            <div class="ion-no-margin" >
+              <ion-item   color="warning" *ngFor="let dat of dataAux" (click)="addListenNFC(dat.PREC_ID, dat.PUNTO_NOMBRE)">
+                <ion-icon ios="ios-disc" md="md-disc" color="danger" slot="start"></ion-icon>
+                <ion-label>
+                  <h2 no-margin class="fw500 no-margin">
+                    <ion-text class="fw500 no-margin" color="dark">{{dat.PUNTO_NOMBRE}}</ion-text>
+                  </h2>
+                  <p class="lpuesto">
+                    <ion-text color="danger">ATM - {{dat.PUNTO_ATM}}</ion-text>
+                  </p>
+                  <p class="lpuesto">
+                    <ion-text >Precinto:  {{dat.PREC_ID}} - {{dat.PREC_TIPO_PRECINTO}}</ion-text>
+                  </p>
+                  <p class="lpuesto">
+                    <ion-text color="dark">Ubicación: {{dat.UBICACION}}</ion-text>
+                  </p>
+                  <!--
+                  <p class="lpuesto">
+                    <ion-text >Tipo: {{dat.PREC_TIPO_PRECINTO}}</ion-text>
+                  </p>
+                  -->
+                </ion-label>
+               <!--<ion-note slot="end" color="danger" (click)="presentwritenfc(dat.PREC_ID,'0')" >Asignar</ion-note>-->
+              </ion-item>
+            </div>
+          </div>
+          <div *ngIf="stLNFC === 'QR'">
+            <div class="ion-no-margin" >
+              <ion-item   color="warning" *ngFor="let dat of dataAux" (click)="SrCodigoQR(dat.PREC_ID, dat.PUNTO_NOMBRE)">
+                <ion-icon ios="ios-keypad" md="md-keypad" color="danger" slot="start"></ion-icon>
+                <ion-label>
+                  <h2 no-margin class="fw500 no-margin">
+                    <ion-text class="fw500 no-margin" color="dark">{{dat.PUNTO_NOMBRE}}</ion-text>
+                  </h2>
+                  <p class="lpuesto">
+                    <ion-text color="danger">ATM - {{dat.PUNTO_ATM}}</ion-text>
+                  </p>
+                  <p class="lpuesto">
+                    <ion-text >Precinto:  {{dat.PREC_ID}} - {{dat.PREC_TIPO_PRECINTO}}</ion-text>
+                  </p>
+                  <p class="lpuesto">
+                    <ion-text color="dark">Ubicación: {{dat.UBICACION}}</ion-text>
+                  </p>
+                  <!--
+                  <p class="lpuesto">
+                    <ion-text >Tipo: {{dat.PREC_TIPO_PRECINTO}}</ion-text>
+                  </p>
+                  -->
+                </ion-label>
+               <!--<ion-note slot="end" color="danger" (click)="presentwritenfc(dat.PREC_ID,'0')" >Asignar</ion-note>-->
+              </ion-item>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+</div>
+
+
+</ion-content>
